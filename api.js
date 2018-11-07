@@ -14,7 +14,8 @@ function elem_hasClass( elem, className ) { // elem_hasClass( document.body, "A-
  var elem_class = "";
  try {
   elem_class = elem.getAttribute( "class" );
- } catch( ex ) {
+ }
+ catch( ex ) {
   elem_class = "";
  }
  return( ( " " + elem_class + " " ).indexOf( " " + className + " " ) >= 0 );
@@ -23,7 +24,8 @@ function elem_classSwap( elem, class_from, class_to ) { // elem_classSwap( docum
  var elem_class = "";
  try {
   elem_class = elem.getAttribute( "class" );
- } catch( ex ) {
+ }
+ catch( ex ) {
   elem_class = "";
  }
  var classes = ( " " + elem_class + " " ).replace( " " + class_from + " ", " " + class_to + " " );
