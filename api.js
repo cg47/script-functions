@@ -62,7 +62,11 @@ function bytes2int( bytes ) { // bytes2int( [ 0xDE, 0xAD ] ) = 0xDEAD
  return( bytes[ 1 ] | bytes[ 0 ] << 8 );
 }
 function bytes2string( bytes ) { // bytes2string( [ 0x0D, 0x0A ] ) = "\r\n"
- return( hex2string( bytes2hex( bytes ) ) );
+ var string = "";
+ for( var i = 0; i < bytes.length; i++ ) {
+  string += String.fromCharCode( parseInt( bytes[ i ], 2 ) );
+ }
+ return( string );
 }
 function hex2bytes( hex ) { // hex2bytes( "0D0A" ) = [ 0x0D, 0x0A ]
  var bytes = new Array();
