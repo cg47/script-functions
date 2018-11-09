@@ -56,7 +56,6 @@ function byte2dataBlockLength( byte ) { // byte2dataBlockLength( 0x7F ) = 0x3F8
  return( byte * 8 );
 }
 function bytes2hex( bytes ) { // bytes2hex( [ 0x0D, 0x0A ] ) = "0D0A"
- bytes = ( typeof( bytes ) !== "undefined" && bytes instanceof Array ) ? bytes : [ bytes ];
  return( Array.from( bytes, function( byte ) {
   return( ( "0" + ( byte & 0xFF ).toString( 16 ) ).slice( -2 ) );
  } ).join( "" ).toUpperCase() );
@@ -72,7 +71,6 @@ function bytes2int( bytes ) { // bytes2int( [ 0xDE, 0xAD ] ) = 0xDEAD
  return( int );
 }
 function bytes2string( bytes ) { // bytes2string( [ 0x0D, 0x0A ] ) = "\r\n"
- bytes = ( typeof( bytes ) !== "undefined" && bytes instanceof Array ) ? bytes : [ bytes ];
  var string = "";
  for( var i = 0; i < bytes.length; i++ ) {
   string += String.fromCharCode( parseInt( bytes[ i ] ) );
