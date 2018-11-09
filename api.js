@@ -97,23 +97,20 @@ function hex2string( hex ) { // hex2string( "0D0A" ) = "\r\n"
 function dataBlocks2bytes( start, bytes, stop_at_byte ) { // dataBlocks2bytes( 0, [ 0x02, 0xDE, 0xAD, 0xFF, 0x02, 0xBE, 0xEF ], 0xFF ) = [ [ 0xDE, 0xAD ], 0x03 ]
  start = start || 0;
  stop_at_byte = stop_at_byte || -1;
- var all_blocks_end_at_index = start;
  var a = new Array();
  for(;;) {
   var block_length = bytes[ start ] * 8;
   for( var i = 1; i <= block_length; i++ ) {
    var b = bytes[ start + i ];
    if( b == stop_at_byte ) {
-    all_blocks_end_at_index = start + i;
     break;
    }
    a.push( b );
   }
   start += block_length + 1;
-  all_blocks_end_at_index = start - 1;
   if( block_length != 0x7F * 8 ) {
    break;
   }
  }
- return( [ a, all_blocks_end_at_index ] );
+ return( [ a, start - 1 ] );
 }
