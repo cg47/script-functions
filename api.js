@@ -112,5 +112,5 @@ function dataBlocks2bytes( start, bytes, stop_at_byte ) { // dataBlocks2bytes( 0
    break;
   }
  }
- return( [ a, start - 1 ] );
+ return( [ a, start ] );
 }
