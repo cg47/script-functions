@@ -96,18 +96,22 @@ function dataBlocks2bytes( start, bytes, stop_at_byte ) { // dataBlocks2bytes( 0
  start = start || 0;
  stop_at_byte = stop_at_byte || -1;
  var a = new Array();
+ dance:
  for(;;) {
+  if( bytes[ start ] == stop_at_byte ) {
+   break dance;
+  }
   var block_length = bytes[ start ] * 8;
   for( var i = 1; i <= block_length; i++ ) {
    var b = bytes[ start + i ];
    if( b == stop_at_byte ) {
-    break;
+    break dance;
    }
    a.push( b );
   }
   start += block_length + 1;
   if( block_length != 0x7F * 8 ) {
-   break;
+   break dance;
   }
  }
  return( [ a, start - 1 ] );
